@@ -53,19 +53,19 @@ def hentaidl(client, callback_query):
     result = requests.get(url) 
     result = result.json()  
     url = result["data"][0]["url"]
-    callback_query.edit_message_text("""Wait till we fetch hentai for you...\nStatus: **DOWNLOADING**""", parse_mode="markdown")
+    callback_query.edit_message_text("""Wait till we fetch hentai for you...\nStatus: **DOWNLOADING**""", parse_mode="Markdown")
     if not url == "":        
         url3 = result["data"][2]["url"]
         file1 = f"{link}.mp4"        
         subprocess.run("ffmpeg -i {} -acodec copy -vcodec copy {}".format(url3, file1), shell=True)
         callback_query.edit_message_text("""Uploading Now""", parse_mode="markdown")              
-        client.send_document(chat_id=chatid, document=f'{link}.mp4', caption=f"""Download By @hanime_dl_bot""", parse_mode="markdown")   
+        client.send_document(chat_id=chatid, document=f'{link}.mp4', caption=f"""Download By @hanime_dl_bot""", parse_mode="Markdown")   
         os.remove(file1)
     if url == "":     
         url3 = result["data"][3]["url"]
         file1 = f"{link}.mp4"        
         subprocess.run("ffmpeg -i {} -acodec copy -vcodec copy {}".format(url3, file1), shell=True)
         callback_query.edit_message_text("""Uploading Now""", parse_mode="markdown")       
-        client.send_document(chat_id=chatid, document=f'{link}.mp4', caption=f"""Download By @hanime_dl_bot""", parse_mode="markdown")   
+        client.send_document(chat_id=chatid, document=f'{link}.mp4', caption=f"""Download By @hanime_dl_bot""", parse_mode="Markdown")   
         os.remove(file1)
  
